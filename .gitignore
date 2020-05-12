@@ -122,3 +122,5 @@ fabric.properties
 .history
 
 # End of https://www.gitignore.io/api/go,jetbrains,visualstudiocode
+
+/bin
