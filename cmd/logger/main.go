@@ -68,14 +68,11 @@ func (r *runner) run() error {
 }
 
 func (r *runner) loadClient() error {
-	r.cli = client.NewClient(r.addr)
-
-	if err := r.cli.Register(); err != nil {
-		return err
-	}
-
 	r.ch = make(chan client.Object, 1024)
-	if err := r.cli.Socket(r.ch); err != nil {
+
+	var err error
+	r.cli, err = client.NewClient(r.ch)
+	if err != nil {
 		return err
 	}
 
