@@ -1,5 +1,5 @@
 package uploader
 
 type Uploader interface {
-	Upload(path string) error
+	Upload(path, key string) error
 }

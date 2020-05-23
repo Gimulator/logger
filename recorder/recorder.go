@@ -15,9 +15,13 @@ type Recorder struct {
 	endKey string
 }
 
-func NewRecorder(ch chan client.Object) (*Recorder, error) {
+func NewRecorder(ch chan client.Object, endKey string) (*Recorder, error) {
+	if ch == nil {
+		return nil, fmt.Errorf("invalid channel to read objects")
+	}
 	r := &Recorder{
-		ch: ch,
+		ch:     ch,
+		endKey: endKey,
 	}
 
 	err := r.env()
@@ -33,29 +37,35 @@ func NewRecorder(ch chan client.Object) (*Recorder, error) {
 }
 
 func (r *Recorder) env() error {
-	dir := os.Getenv("LOGGER_RECORD_DIR")
+	dir := os.Getenv("LOGGER_RECORDER_DIR")
 	if dir == "" {
-		return fmt.Errorf("set the 'LOGGER_RECORD_DIR' environment variable for storing logs in it")
+		return fmt.Errorf("set the 'LOGGER_RECORDER_DIR' environment variable for storing logs in it")
 	}
 	r.path = filepath.Join(dir, "logger.log")
-
-	endKey := os.Getenv("LOGGER_RECORD_END_KEY")
-	if endKey == "" {
-		return fmt.Errorf("set the 'LOGGER_RECORD_END_KEY' environment variable to exit the program")
-	}
-	r.endKey = endKey
 
 	return nil
 }
 
-func (r *Recorder) Record() (client.Object, string) {
+func (r *Recorder) Record() (client.Object, error) {
+	defer r.file.Close()
+
 	for {
 		obj := <-r.ch
-		r.file.WriteString(fmt.Sprintf("%v\n", obj))
-		r.file.Sync()
+		_, err := r.file.WriteString(fmt.Sprintf("%v\n", obj))
+		if err != nil {
+			return client.Object{}, err
+		}
+
+		if err := r.file.Sync(); err != nil {
+			return client.Object{}, err
+		}
 
 		if obj.Key.Type == r.endKey {
-			return obj, r.path
+			return obj, nil
 		}
 	}
+}
+
+func (r *Recorder) LogFilePath() string {
+	return r.path
 }
