@@ -41,11 +41,11 @@ func NewRabbit() (*Rabbit, error) {
 func (r *Rabbit) env() error {
 	r.uri = os.Getenv("LOGGER_RABBIT_URI")
 	if r.uri == "" {
-		return fmt.Errorf("set th 'LOGGER_RABBIT_URI' environment variable to send result to RabbitMQ")
+		return fmt.Errorf("set th 'LOGGER_RABBIT_URI' environment variable for sending result to RabbitMQ")
 	}
 	r.queueName = os.Getenv("LOGGER_RABBIT_QUEUE")
 	if r.queueName == "" {
-		return fmt.Errorf("set th 'LOGGER_RABBIT_QUEUE' environment variable to send result to RabbitMQ")
+		return fmt.Errorf("set th 'LOGGER_RABBIT_QUEUE' environment variable for sending result to RabbitMQ")
 	}
 	return nil
 }

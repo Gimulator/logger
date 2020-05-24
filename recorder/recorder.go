@@ -17,7 +17,7 @@ type Recorder struct {
 
 func NewRecorder(ch chan client.Object, endKey string) (*Recorder, error) {
 	if ch == nil {
-		return nil, fmt.Errorf("invalid channel to read objects")
+		return nil, fmt.Errorf("nil channel for reading objects")
 	}
 	r := &Recorder{
 		ch:     ch,
@@ -39,7 +39,7 @@ func NewRecorder(ch chan client.Object, endKey string) (*Recorder, error) {
 func (r *Recorder) env() error {
 	dir := os.Getenv("LOGGER_RECORDER_DIR")
 	if dir == "" {
-		return fmt.Errorf("set the 'LOGGER_RECORDER_DIR' environment variable for storing logs in it")
+		return fmt.Errorf("set the 'LOGGER_RECORDER_DIR' environment variable for storing logs")
 	}
 	r.path = filepath.Join(dir, "logger.log")
 

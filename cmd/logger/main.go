@@ -185,12 +185,12 @@ func (r *runner) loadConcluder(noConcluder bool) (err error) {
 func (r *runner) env() error {
 	r.roomEndKey = os.Getenv("ROOM_END_OF_GAME_KEY")
 	if r.roomEndKey == "" {
-		return fmt.Errorf("set the 'ROOM_END_OF_GAME_KEY' environment variable to detect when game is over")
+		return fmt.Errorf("set the 'ROOM_END_OF_GAME_KEY' environment variable for detecting the end of the game")
 	}
 
 	r.roomID = os.Getenv("ROOM_ID")
 	if r.roomID == "" {
-		return fmt.Errorf("set the 'ROOM_ID' environment variable to record")
+		return fmt.Errorf("set the 'ROOM_ID' environment variable for recording and uploading logs")
 	}
 	return nil
 }
