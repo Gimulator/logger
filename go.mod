@@ -3,7 +3,7 @@ module github.com/Gimulator/logger
 go 1.14
 
 require (
-	github.com/Gimulator/client-go v0.0.0-20200520193858-24d17c9c6b7b
+	github.com/Gimulator/client-go v0.0.0-20200601143903-da4b97a9eed0
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/minio/minio-go/v6 v6.0.55

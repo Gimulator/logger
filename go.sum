@@ -1,5 +1,7 @@
 github.com/Gimulator/client-go v0.0.0-20200520193858-24d17c9c6b7b h1:L3Ze5P2vzxbH9fulv82gGWeAMn7bwGbNRu+tS9hfaIM=
 github.com/Gimulator/client-go v0.0.0-20200520193858-24d17c9c6b7b/go.mod h1:w9S1W8tt/Sbs8x6ilYtKv1mZoqHmfarw5yehgQnNamk=
+github.com/Gimulator/client-go v0.0.0-20200601143903-da4b97a9eed0 h1:oNujcblwJsxM7YtGfIaX7fuPDMaZFeOEn/0YNn26ynU=
+github.com/Gimulator/client-go v0.0.0-20200601143903-da4b97a9eed0/go.mod h1:w9S1W8tt/Sbs8x6ilYtKv1mZoqHmfarw5yehgQnNamk=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
