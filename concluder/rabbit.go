@@ -1,12 +1,12 @@
 package concluder
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 
 	client "github.com/Gimulator/client-go"
 	"github.com/streadway/amqp"
-	"gopkg.in/yaml.v2"
 )
 
 type Rabbit struct {
@@ -66,7 +66,7 @@ func (r *Rabbit) Send(obj client.Object) error {
 		return err
 	}
 
-	data, err := yaml.Marshal(obj)
+	data, err := json.Marshal(obj.Value)
 	if err != nil {
 		return err
 	}
